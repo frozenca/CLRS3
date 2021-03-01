@@ -15,7 +15,7 @@ public:
 
     void DFSVisit(std::size_t u, std::vector<int>& visited, std::list<std::size_t>& topSort) {
         visited[u] = true;
-        for (const auto& [v, w] : adj[u]) {
+        for (auto v : adj[u]) {
             if (!visited[v]) {
                 DFSVisit(v, visited, topSort);
             }

@@ -44,9 +44,13 @@ public:
         std::size_t time = 0;
         for (std::size_t i = 0; i < n; i++) {
             if (std::get<0>(infos[i]) == Color::White) {
-                return DFSVisit(i, time);
+                auto res = DFSVisit(i, time);
+                if (res) {
+                    return true;
+                }
             }
         }
+        return false;
     }
 };
 
