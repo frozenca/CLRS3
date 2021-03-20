@@ -5,7 +5,7 @@
 
 template <typename T>
 bool binarySearchRecursive(const std::vector<T>& A, size_t p, size_t q, const T& key) {
-    if (p > q) {
+    if (p > q || q > A.size()) {
         return false;
     }
     size_t m = p + (q - p) / 2;
@@ -14,7 +14,7 @@ bool binarySearchRecursive(const std::vector<T>& A, size_t p, size_t q, const T&
     } else if (A[m] < key) {
         return binarySearchRecursive(A, m + 1, q, key);
     } else {
-        return m;
+        return true;
     }
 }
 
@@ -26,6 +26,13 @@ bool binarySearch(const std::vector<T>& A, const T& key) {
 
 int main() {
     std::vector<int> v {1, 2, 4, 6, 7};
+    assert(!binarySearch(v, 0));
+    assert(binarySearch(v, 1));
+    assert(binarySearch(v, 2));
+    assert(!binarySearch(v, 3));
     assert(binarySearch(v, 4));
     assert(!binarySearch(v, 5));
+    assert(binarySearch(v, 6));
+    assert(binarySearch(v, 7));
+    assert(!binarySearch(v, 8));
 }
