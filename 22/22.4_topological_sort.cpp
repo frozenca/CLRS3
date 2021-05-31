@@ -24,7 +24,6 @@ public:
     }
 
     std::list<std::size_t> TopologicalSort() {
-        std::stack<std::size_t> S;
         std::list<std::size_t> topSort;
         std::vector<int> visited (n);
 
