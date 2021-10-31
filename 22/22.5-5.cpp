@@ -126,7 +126,7 @@ public:
         auto SCCMap = getStronglyConnectedComponents();
         auto SortedSCCMap = countingSort(SCCMap, n);
         auto VSCC = SortedSCCMap;
-        VSCC.erase(sr::unique(VSCC), VSCC.end());
+        VSCC.erase(std::unique(VSCC.begin(), VSCC.end()), VSCC.end());
         std::vector<std::pair<std::size_t, std::size_t>> S;
         for (std::size_t u = 0; u < n; u++) {
             for (auto v : adj[u]) {
@@ -157,7 +157,7 @@ public:
             C[B1[i].first]--;
             B2[C[B1[i].first]] = B1[i];
         }
-        B2.erase(sr::unique(B2), B2.end());
+        B2.erase(std::unique(B2.begin(), B2.end()), B2.end());
 
         Graph componentGraph;
         for (const auto& [u, v] : B2) {
